@@ -1,7 +1,11 @@
 package ua.logos.course.HollyWood.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -9,9 +13,11 @@ import javax.persistence.Table;
 public class Category extends BaseEntity{
 	@Column(name = "name")
 	private String name;
+	
+	@OneToMany(mappedBy = "category")
+	private List<Film> films = new ArrayList<>();
 
 	public Category() {
-		super();
 	}
 
 	public Category(String name) {
